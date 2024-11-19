@@ -3,10 +3,10 @@ import { AppTheme } from "../types";
 export const theme : AppTheme = {
     colors: {
         primary: '#A6AEBF',
-        background: '#D0E8C5',
+        background: '#CBDCEB',
         foreground: '#C5D3E8',
         error: '#AF1740',
-        typography: '#FFF8DE',
+        typography: '#4C4B16',
         input: '#133E87',
     }
 }
