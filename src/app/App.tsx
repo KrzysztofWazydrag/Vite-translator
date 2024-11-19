@@ -6,13 +6,7 @@ import { TranslatorScreen } from "../features/translator"
 export const App = () => (
     <ThemeProvider theme={theme}>
         <AppContainer>
-            <TranslatorScreen
-            title='Hello from App'
-            onClick={() => {}}
-            isActive={false}
-            onClick2={() => true}
-            age={26}
-            />
+            <TranslatorScreen />
         </AppContainer>
     </ThemeProvider>
 )
