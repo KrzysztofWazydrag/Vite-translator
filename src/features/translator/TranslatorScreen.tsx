@@ -4,11 +4,11 @@ import { useTranslations } from '../../lib/hooks'
 
 
 export const TranslatorScreen: React.FunctionComponent = () => {
-    const {} = useTranslations()
+    const T = useTranslations()
 
     return (
         <Container>
-            Hello World!!!
+            {T.appName}
         </Container>
     )
 }
