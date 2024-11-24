@@ -8,7 +8,7 @@ export const TranslatorScreen: React.FunctionComponent = () => {
 
     return (
         <Container>
-            {T.appName}
+            {T.components.header.title}
         </Container>
     )
 }
