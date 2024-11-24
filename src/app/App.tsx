@@ -1,7 +1,7 @@
 import React from "react"
 import styled, { ThemeProvider } from "styled-components"
-import { theme } from '../lib/styles'
-import { TranslatorScreen } from "../features/translator"
+import { theme } from 'lib/styles'
+import { TranslatorScreen } from "features/translator"
 
 export const App = () => (
     <ThemeProvider theme={theme}>
