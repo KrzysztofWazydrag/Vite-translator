@@ -1,18 +1,17 @@
 import React from 'react'
 import styled from "styled-components"
-import { useTranslations } from 'lib/hooks'
 
 
-export const TranslatorScreen: React.FunctionComponent = () => {
-    const T = useTranslations()
+export const TranslatorScreen: React.FunctionComponent = () => (
+    <Container>
+        Hello World!!!
+    </Container>
 
-    return (
-        <Container>
-            {T.components.header.title}
-        </Container>
-    )
-}
+)
 const Container = styled.div`
-   color: ${({ theme }) => theme.colors.typography}
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    color: ${({ theme }) => theme.colors.typography}
 `
 
