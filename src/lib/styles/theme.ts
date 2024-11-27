@@ -7,6 +7,6 @@ export const theme : AppTheme = {
         foreground: '#C5D3E8',
         error: '#AF1740',
         typography: '#4C4B16',
-        input: '#133E87',
+        input: '#FFF8DE',
     }
 }
