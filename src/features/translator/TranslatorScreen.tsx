@@ -1,4 +1,4 @@
-import { Loader, SelectLanguage, TextInput } from 'lib/components'
+import { Confidence, Loader, SelectLanguage, TextInput } from 'lib/components'
 import React from 'react'
 import styled from "styled-components"
 
@@ -12,6 +12,7 @@ export const TranslatorScreen: React.FunctionComponent = () => (
                 <LoaderContainer>
                     <Loader />
                 </LoaderContainer>
+                <Confidence />
             </InputContainer>
             <InputContainer>
                 <SelectLanguage />
@@ -31,7 +32,7 @@ const TranslatorContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin-top: 50px
+    margin-top: 50px;
 `
 const InputContainer = styled.div`
     display: flex;
