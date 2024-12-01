@@ -22,6 +22,9 @@ export const TranslatorScreen: React.FunctionComponent = () => (
             <InputContainer>
                 <SelectLanguage />
                 <TextInput />
+                <LoaderContainer>
+                    <Loader />
+                </LoaderContainer>
             </InputContainer>
         </TranslatorContainer>
     </Container>
