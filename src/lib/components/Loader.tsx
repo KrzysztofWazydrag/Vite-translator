@@ -1,6 +1,6 @@
 import {styled , keyframes} from "styled-components"
 
-const loading =keyframes`
+const loading = keyframes`
   0% {
     width: 0;
   }

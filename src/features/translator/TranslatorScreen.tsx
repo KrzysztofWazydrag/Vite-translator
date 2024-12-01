@@ -48,7 +48,7 @@ const InputContainer = styled.div`
 
 const LoaderContainer = styled.div`
     padding: 5 10px;
-    background-color: red;
+    background-color: grey;
 `
 
 const InputFooter = styled.div`
