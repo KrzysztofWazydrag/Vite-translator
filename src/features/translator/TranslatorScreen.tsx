@@ -3,7 +3,7 @@ import React from 'react'
 import styled from "styled-components"
 
 
-
+//component delete this line of code
 export const TranslatorScreen: React.FunctionComponent = () => (
     <Container>
         <TranslatorContainer>
