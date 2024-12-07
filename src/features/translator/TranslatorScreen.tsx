@@ -1,35 +1,45 @@
-import { Confidence, ExchangeLanguage, Loader, SelectLanguage, TextCounter, TextInput } from 'lib/components'
+import { Confidence, Counter, ExchangeLanguage, Loader, SelectLanguage, TextCounter, TextInput } from 'lib/components'
 import React from 'react'
 import styled from "styled-components"
 
 
 //component delete this line of code
-export const TranslatorScreen: React.FunctionComponent = () => (
-    <Container>
-        <TranslatorContainer>
-            <InputContainer>
-                <SelectLanguage />
-                <TextInput />
-                <LoaderContainer>
-                    <Loader />
-                </LoaderContainer>
-                <InputFooter>
-                    <Confidence />
-                    <TextCounter />
-                </InputFooter>
-            </InputContainer>
-            <ExchangeLanguage />
-            <InputContainer>
-                <SelectLanguage />
-                <TextInput />
-                <LoaderContainer>
-                    <Loader />
-                </LoaderContainer>
-            </InputContainer>
-        </TranslatorContainer>
-    </Container>
+export const TranslatorScreen: React.FunctionComponent = () => {
+    return (
+        <Container2>
+            <Counter />
+            <Container>
+            <TranslatorContainer>
+                <InputContainer>
+                    <SelectLanguage />
+                    <TextInput />
+                    <LoaderContainer>
+                        <Loader />
+                    </LoaderContainer>
+                    <InputFooter>
+                        <Confidence />
+                        <TextCounter />
+                    </InputFooter>
+                </InputContainer>
+                <ExchangeLanguage />
+                <InputContainer>
+                    <SelectLanguage />
+                    <TextInput />
+                    <LoaderContainer>
+                        <Loader />
+                    </LoaderContainer>
+                </InputContainer>
+            </TranslatorContainer>
+        </Container>
+    </Container2>
+    )
+}
 
-)
+const Container2 = styled.div`
+    display: flex;
+    flex-direction: column;
+
+`
 
 const Container = styled.div`
     display: flex;
