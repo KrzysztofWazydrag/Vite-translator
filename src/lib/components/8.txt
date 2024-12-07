@@ -1,0 +1,6 @@
+wbudowane hooki w react:
+    -use state
+    -useEffect
+-props vs state
+-lifecycle of components
+-conditional render
