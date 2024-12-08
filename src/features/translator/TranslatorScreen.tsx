@@ -1,18 +1,27 @@
 import { Confidence, Counter, ExchangeLanguage, Loader, SelectLanguage, TextCounter, TextInput } from 'lib/components'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from "styled-components"
 
 
 //component delete this line of code
 export const TranslatorScreen: React.FunctionComponent = () => {
+    const [shouldDestroyCounter, setShouldDestroyCounter] = useState(false)
+    console.log('TranslatorScreen re-render')
+
+    useEffect(() => {
+        console.log('TranslatorScreen component did mount')
+    }, [])
+
     return (
         <Container2>
-            <Counter
-            initialValue={60}
-            onAdd={() =>{
-                alert('Add clicked')
-            }}
-            />
+            {! shouldDestroyCounter && (
+                <Counter
+                    initialValue={60}
+                    onAdd={() =>{
+                        setShouldDestroyCounter(true)
+                    }}
+                />
+            )}
             <Container>
             <TranslatorContainer>
                 <InputContainer>

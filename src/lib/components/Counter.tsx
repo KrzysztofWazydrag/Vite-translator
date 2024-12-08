@@ -25,6 +25,7 @@ export const Counter: React.FunctionComponent<CounterProps> = ({
     initialValue,
     onAdd
 }) => {
+    console.log('Counter re-render')
     //uzywamy hooka useState - ten hook cos przyjmuje i cos zwraca. w przypadku 'stanu' przekazujemy wartosc poczatkowa
     // zeby np ustawic poczatkowa wartosc na 100 dajemy 'initial value' - React zwraca tablice dwuelementowa -> const []
     //uzywamy tam gdzie chcemy zeby react automatycznie przerenederowal nasz komponent
@@ -36,12 +37,31 @@ export const Counter: React.FunctionComponent<CounterProps> = ({
     const [name, setName] = useState('Krzysiek')
 
     /* useEffect przyjmuje funkcje() i nic nie zwraca, drugim parametrem jest rowniez tablica []
+    to jest podstawowy useEffect:
+    useEffect(() => {
+        alert('First time')
+    }, [])
+
+    jesli mamy pusta tablice jak powyzej to np alert wyswietli sie tylko raz czyli np jak odswiezymy strone
+
+    JESLI umiescimy cos w tej tablicy ( jest to tablica zaleznosci) i to sie zmieni lub to wywolamy to react jeszcze
+    raz wywola ta funkcje effect
+
+    USE EFFECT NASLUCHUJE NA ZMIANY VALUE i wywoluje efekt
     */
 
 
     useEffect(() => {
-        
+        alert('Counter component did mount')
     }, [])
+
+    useEffect(() => {
+        console.log(`value:${value} ; name:${name} Counter did update`)
+
+        return() => {
+            console.log('Counter component will unmount')
+        }
+    }, [value,name])
 
         return(
             <CounterContainer>
