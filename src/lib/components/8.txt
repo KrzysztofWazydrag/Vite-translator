@@ -1,5 +1,14 @@
 wbudowane hooki w react:
-    -use state
+    -use state - uzywamy wtedy kiedy chcemy zmienic jakas wartosc w czasie - zeby uzyc tego stanu uzywamy hooka 'useState'
+w react Rodzic moze przekazac informacje do dziecka poprzez przekazanie liczby, boolean, stringa,
+    tablicy, obiektu a nawet funkcji
+    Dziecko moze wyswietlic te propsy za pomoca bracketsów {} w dowolnym miejscu np {value}, {name}
+    Moze je uzyc do ustawienia domyslnego stanu(initialState)
+    Moze uzyc funkcji ktora dostaje w propsach aby powiadomic rodzica ze cos np sie kliknelo, zmienilo
+    PAMIETAJ: Propsy dzialaja w dwie strony: mozna przekazac cos z rodzica ale dziecko moze tez wywolac funkcje
+    tak ze rodzic bedzie wiedziec ze cos sie zmienilo
+
+
     -useEffect
 -props vs state
 -lifecycle of components

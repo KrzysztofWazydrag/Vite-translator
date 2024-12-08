@@ -7,7 +7,12 @@ import styled from "styled-components"
 export const TranslatorScreen: React.FunctionComponent = () => {
     return (
         <Container2>
-            <Counter />
+            <Counter
+            initialValue={60}
+            onAdd={() =>{
+                alert('Add clicked')
+            }}
+            />
             <Container>
             <TranslatorContainer>
                 <InputContainer>
