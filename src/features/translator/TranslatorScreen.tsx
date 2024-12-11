@@ -1,27 +1,14 @@
 import { Confidence, Counter, ExchangeLanguage, Loader, SelectLanguage, TextCounter, TextInput } from 'lib/components'
 import React, { useEffect, useState } from 'react'
 import styled from "styled-components"
+import { useSupportedLanguages } from './useSupportedLanguages'
 
 
 //component delete this line of code
 export const TranslatorScreen: React.FunctionComponent = () => {
-    const [shouldDestroyCounter, setShouldDestroyCounter] = useState(false)
-    console.log('TranslatorScreen re-render')
-
-    useEffect(() => {
-        console.log('TranslatorScreen component did mount')
-    }, [])
+    const {} = useSupportedLanguages()
 
     return (
-        <Container2>
-            {! shouldDestroyCounter && (
-                <Counter
-                    initialValue={60}
-                    onAdd={() =>{
-                        setShouldDestroyCounter(true)
-                    }}
-                />
-            )}
             <Container>
             <TranslatorContainer>
                 <InputContainer>
@@ -45,8 +32,7 @@ export const TranslatorScreen: React.FunctionComponent = () => {
                 </InputContainer>
             </TranslatorContainer>
         </Container>
-    </Container2>
-    )
+        )
 }
 
 const Container2 = styled.div`
