@@ -1,14 +1,13 @@
 import { Confidence, Counter, ExchangeLanguage, Loader, SelectLanguage, TextCounter, TextInput } from 'lib/components'
-import React, { useEffect, useState } from 'react'
 import styled from "styled-components"
 import { useSupportedLanguages } from './useSupportedLanguages'
 
 
 //component delete this line of code
 export const TranslatorScreen: React.FunctionComponent = () => {
-    const {} = useSupportedLanguages()
+    useSupportedLanguages()
 
-    return (
+        return(
             <Container>
             <TranslatorContainer>
                 <InputContainer>
@@ -33,14 +32,7 @@ export const TranslatorScreen: React.FunctionComponent = () => {
             </TranslatorContainer>
         </Container>
         )
-}
-
-const Container2 = styled.div`
-    display: flex;
-    flex-direction: column;
-
-`
-
+    }
 const Container = styled.div`
     display: flex;
     flex-direction: column;
