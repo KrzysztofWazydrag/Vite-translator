@@ -1,11 +1,16 @@
 import { Confidence, Counter, ExchangeLanguage, Loader, SelectLanguage, TextCounter, TextInput } from 'lib/components'
 import styled from "styled-components"
 import { useSupportedLanguages } from './useSupportedLanguages'
+import { useEffect } from 'react'
 
 
 //component delete this line of code
 export const TranslatorScreen: React.FunctionComponent = () => {
-    useSupportedLanguages()
+    const { isLoading, hasError, fetch } = useSupportedLanguages()
+
+    useEffect(() => {
+        fetch()
+    }, [])
 
         return(
             <Container>

@@ -1,13 +1,25 @@
 import { useEffect, useState } from "react"
 
 export const useSupportedLanguages = () => {
-    const [isLoading, setLoading] = useState<boolean>()
-    const [hasError, setHasError] = useState<boolean>()
+    const [isLoading, setLoading] = useState<boolean>(false)
+    const [hasError, setHasError] = useState<boolean>(false)
 
-    useEffect(() => {
-        fetch('https://libretranslate.com/languages')
-        .then(response => response.json())
-        .then(data => console.log(data))
-    }, [])
+    return {
+        isLoading,
+        hasError,
+        fetch: () => {
+            setLoading(true)
+            setHasError(false)
 
+            fetch('https://libretranslate.com/languages')
+                .then(response => response.json())
+                .then(data => console.log(data))
+                .catch(() => {
+                    setHasError(true)
+                })
+                .finally(() => {
+                    
+                })
+        }
+    }
 }
