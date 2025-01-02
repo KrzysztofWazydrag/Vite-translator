@@ -55,12 +55,10 @@ const InputContainer = styled.div`
     flex-direction: column;
     padding: 0 5px;
 `
-
 const LoaderContainer = styled.div`
     padding: 5 10px;
     background-color: grey;
 `
-
 const InputFooter = styled.div`
     display: flex;
     flex-direction: row;

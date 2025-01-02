@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 
-export const useSupportedLanguages = () => {
+export const useSupportedLanguages = (
+    onSuccess:() => void
+) => {
     const [isLoading, setLoading] = useState<boolean>(false)
     const [hasError, setHasError] = useState<boolean>(false)
 
@@ -18,7 +20,7 @@ export const useSupportedLanguages = () => {
                     setHasError(true)
                 })
                 .finally(() => {
-                    
+                    setLoading(false)
                 })
         }
     }
