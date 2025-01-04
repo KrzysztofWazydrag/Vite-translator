@@ -1,3 +1,4 @@
+import React from "react";
 import {styled , keyframes} from "styled-components"
 
 const loading = keyframes`
@@ -9,8 +10,11 @@ const loading = keyframes`
   }
 `;
 
-export const Loader = () => (
-    <ActivityIndicator />
+export const Loader: React.FunctionComponent = ({ children }) => (
+    <LoaderContainer>
+        <ActivityIndicator />
+        {children}
+    </LoaderContainer>
 )
 
 const ActivityIndicator = styled.div`
@@ -20,6 +24,10 @@ const ActivityIndicator = styled.div`
     background-color: ${({ theme }) => theme.colors.primary };
     border-radius: 6px;
     animation: ${loading} 1s linear infinite alternate;
+`
+
+const LoaderContainer = styled.div`
+
 `
 
 

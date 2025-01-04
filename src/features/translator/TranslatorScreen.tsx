@@ -1,16 +1,44 @@
 import { Confidence, Counter, ExchangeLanguage, Loader, SelectLanguage, TextCounter, TextInput } from 'lib/components'
 import styled from "styled-components"
 import { useSupportedLanguages } from './useSupportedLanguages'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { Language } from 'lib/models'
+import { useTranslations } from 'lib/hooks'
 
 
 //component delete this line of code
 export const TranslatorScreen: React.FunctionComponent = () => {
-    const { isLoading, hasError, fetch } = useSupportedLanguages()
+    const T = useTranslations()
+    const [languages, setLanguages] = useState<Array<Language>>([])
+    const { isLoading, hasError, fetch: getSupportedLanguages } = useSupportedLanguages(
+        languages => console.log(languages)
+    )
 
     useEffect(() => {
-        fetch()
+        getSupportedLanguages()
     }, [])
+
+    if (true) {
+        return (
+            <FetchLoaderContainer>
+                <Loader>
+                    {T.screen.translator.loading}
+                </Loader>
+            </FetchLoaderContainer>
+        )
+    }
+
+    // if (hasError) {
+    //     return (
+
+    //     )
+    // }
+
+    // if (languages.length === 0 ) {
+    //     return (
+
+    //     )
+    // }
 
         return(
             <Container>
@@ -63,4 +91,9 @@ const InputFooter = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+`
+const FetchLoaderContainer = styled.div`
+    width: 50%;
+    align-self: center;
+    display: flex;
 `

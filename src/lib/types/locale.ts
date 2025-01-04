@@ -10,5 +10,10 @@ export type Dictionary = {
             flatIcon: string,
             libreTranslate: string
         }
+    },
+    screen: {
+        translator: {
+            loading: string
+        }
     }
 }

@@ -13,5 +13,10 @@ export const en_GB: Dictionary = {
             flatIcon: 'FlatIcon',
             libreTranslate: 'LibreTranslate'
         }
+    },
+    screen: {
+        translator: {
+            loading: 'Fetching supported languages'
+        }
     }
 }

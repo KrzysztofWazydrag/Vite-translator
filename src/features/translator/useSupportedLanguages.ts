@@ -1,7 +1,9 @@
+import { APP_CONFIG } from "lib/config"
+import { Language } from "lib/models"
 import { useEffect, useState } from "react"
 
 export const useSupportedLanguages = (
-    onSuccess:() => void
+    onSuccess:(languages: Array<Language>) => void
 ) => {
     const [isLoading, setLoading] = useState<boolean>(false)
     const [hasError, setHasError] = useState<boolean>(false)
@@ -13,9 +15,16 @@ export const useSupportedLanguages = (
             setLoading(true)
             setHasError(false)
 
-            fetch('https://libretranslate.com/languages')
+            fetch(`${APP_CONFIG.API_URL}/languages`)
+                .then(response => {
+                    if (response.ok) {
+                        return response
+                    }
+
+                    throw response
+                })
                 .then(response => response.json())
-                .then(data => console.log(data))
+                .then(onSuccess)
                 .catch(() => {
                     setHasError(true)
                 })
