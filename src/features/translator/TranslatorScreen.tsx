@@ -1,4 +1,4 @@
-import { Confidence, Counter, ExchangeLanguage, Loader, SelectLanguage, TextCounter, TextInput } from 'lib/components'
+import { Confidence, ExchangeLanguage, Loader, Message, SelectLanguage, TextCounter, TextInput } from 'lib/components'
 import styled from "styled-components"
 import { useSupportedLanguages } from './useSupportedLanguages'
 import { useEffect, useState } from 'react'
@@ -18,27 +18,33 @@ export const TranslatorScreen: React.FunctionComponent = () => {
         getSupportedLanguages()
     }, [])
 
-    if (true) {
+    if (isLoading) {
         return (
             <FetchLoaderContainer>
                 <Loader>
-                    {T.screen.translator.loading}
+                    <LoaderText>
+                        {T.screen.translator.loading}
+                    </LoaderText>
                 </Loader>
             </FetchLoaderContainer>
         )
     }
 
-    // if (hasError) {
-    //     return (
+    if (true) {
+        return (
+            <Message
+                withButton
+                message = "Something went wrong"
+                onClick={() => getSupportedLanguages()}
+            />
+        )
+    }
 
-    //     )
-    // }
-
-    // if (languages.length === 0 ) {
-    //     return (
-
-    //     )
-    // }
+    if (languages.length === 0 ) {
+        return (
+            <Message message = "No supported language"/>
+        )
+    }
 
         return(
             <Container>
@@ -96,4 +102,8 @@ const FetchLoaderContainer = styled.div`
     width: 50%;
     align-self: center;
     display: flex;
+`
+const LoaderText = styled.div`
+    color: ${({ theme }) => theme.colors.typography};
+    margin-top: 10px;
 `

@@ -13,12 +13,16 @@ const loading = keyframes`
 export const Loader: React.FunctionComponent = ({ children }) => (
     <LoaderContainer>
         <ActivityIndicator />
-        {children}
+        {children && (
+            <ChildrenContainer>
+                {children}
+            </ChildrenContainer>
+        )}
     </LoaderContainer>
 )
 
 const ActivityIndicator = styled.div`
-    width: 100%;
+    widdth: 100%;
     height: 2px;
     margin: 5px;
     background-color: ${({ theme }) => theme.colors.primary };
@@ -26,7 +30,13 @@ const ActivityIndicator = styled.div`
     animation: ${loading} 1s linear infinite alternate;
 `
 
+const ChildrenContainer = styled.div`
+    text-align: center;
+`
+
 const LoaderContainer = styled.div`
+    width: 100%;
+
 
 `
 
