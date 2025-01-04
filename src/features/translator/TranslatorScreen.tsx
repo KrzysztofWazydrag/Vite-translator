@@ -10,9 +10,7 @@ import { useTranslations } from 'lib/hooks'
 export const TranslatorScreen: React.FunctionComponent = () => {
     const T = useTranslations()
     const [languages, setLanguages] = useState<Array<Language>>([])
-    const { isLoading, hasError, fetch: getSupportedLanguages } = useSupportedLanguages(
-        languages => console.log(languages)
-    )
+    const { isLoading, hasError, fetch: getSupportedLanguages } = useSupportedLanguages(setLanguages)
 
     useEffect(() => {
         getSupportedLanguages()
@@ -30,19 +28,23 @@ export const TranslatorScreen: React.FunctionComponent = () => {
         )
     }
 
-    if (true) {
+    if (hasError) {
         return (
-            <Message
+            <CenterContainer>
+                <Message
                 withButton
-                message = "Something went wrong"
+                message = {T.screen.translator.error}
                 onClick={() => getSupportedLanguages()}
-            />
+                />
+            </CenterContainer>
         )
     }
 
     if (languages.length === 0 ) {
         return (
-            <Message message = "No supported language"/>
+            <CenterContainer>
+            <Message message = {T.screen.translator.empty}/>
+            </CenterContainer>
         )
     }
 
@@ -106,4 +108,8 @@ const FetchLoaderContainer = styled.div`
 const LoaderText = styled.div`
     color: ${({ theme }) => theme.colors.typography};
     margin-top: 10px;
+`
+const CenterContainer = styled.div`
+    display: flex;
+    justify-content: center;
 `

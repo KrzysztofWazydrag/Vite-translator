@@ -16,7 +16,9 @@ export type Dictionary = {
     },
     screen: {
         translator: {
-            loading: string
+            loading: string,
+            error: string,
+            empty: string
         }
     }
 }
