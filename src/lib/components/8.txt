@@ -85,3 +85,7 @@ export const Counter: React.FunctionComponent<CounterProps> = ({
 -props vs state
 -lifecycle of components
 -conditional render
+
+
+
+heje heh
