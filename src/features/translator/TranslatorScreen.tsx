@@ -6,6 +6,10 @@ import { Language } from 'lib/models'
 import { useTranslations } from 'lib/hooks'
 
 
+type TranslatorScreenProps = {
+
+}
+
 //component delete this line of code
 export const TranslatorScreen: React.FunctionComponent = () => {
     const T = useTranslations()
