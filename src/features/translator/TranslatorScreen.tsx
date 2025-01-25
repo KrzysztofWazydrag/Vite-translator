@@ -7,51 +7,15 @@ import { useTranslations } from 'lib/hooks'
 
 
 type TranslatorScreenProps = {
-
+    languages: Array<Language>
 }
 
 //component delete this line of code
-export const TranslatorScreen: React.FunctionComponent = () => {
+export const TranslatorScreen: React.FunctionComponent<TranslatorScreenProps> = ({
+    languages
+}) => {
     const T = useTranslations()
-    const [languages, setLanguages] = useState<Array<Language>>([])
-    const { isLoading, hasError, fetch: getSupportedLanguages } = useSupportedLanguages(setLanguages)
-
-    useEffect(() => {
-        getSupportedLanguages()
-    }, [])
-
-    if (isLoading) {
-        return (
-            <FetchLoaderContainer>
-                <Loader>
-                    <LoaderText>
-                        {T.screen.translator.loading}
-                    </LoaderText>
-                </Loader>
-            </FetchLoaderContainer>
-        )
-    }
-
-    if (hasError) {
-        return (
-            <CenterContainer>
-                <Message
-                withButton
-                message = {T.screen.translator.error}
-                onClick={() => getSupportedLanguages()}
-                />
-            </CenterContainer>
-        )
-    }
-
-    if (languages.length === 0 ) {
-        return (
-            <CenterContainer>
-            <Message message = {T.screen.translator.empty}/>
-            </CenterContainer>
-        )
-    }
-
+    
         return(
             <Container>
             <TranslatorContainer>
