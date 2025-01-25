@@ -1,9 +1,7 @@
+import React from 'react'
 import { Confidence, ExchangeLanguage, Loader, Message, SelectLanguage, TextCounter, TextInput } from 'lib/components'
 import styled from "styled-components"
-import { useSupportedLanguages } from './useSupportedLanguages'
-import { useEffect, useState } from 'react'
 import { Language } from 'lib/models'
-import { useTranslations } from 'lib/hooks'
 
 
 type TranslatorScreenProps = {
@@ -13,10 +11,7 @@ type TranslatorScreenProps = {
 //component delete this line of code
 export const TranslatorScreen: React.FunctionComponent<TranslatorScreenProps> = ({
     languages
-}) => {
-    const T = useTranslations()
-    
-        return(
+}) =>(
             <Container>
             <TranslatorContainer>
                 <InputContainer>
@@ -41,7 +36,6 @@ export const TranslatorScreen: React.FunctionComponent<TranslatorScreenProps> = 
             </TranslatorContainer>
         </Container>
         )
-    }
 const Container = styled.div`
     display: flex;
     flex-direction: column;
@@ -68,16 +62,4 @@ const InputFooter = styled.div`
     flex-direction: row;
     justify-content: space-between;
 `
-const FetchLoaderContainer = styled.div`
-    width: 50%;
-    align-self: center;
-    display: flex;
-`
-const LoaderText = styled.div`
-    color: ${({ theme }) => theme.colors.typography};
-    margin-top: 10px;
-`
-const CenterContainer = styled.div`
-    display: flex;
-    justify-content: center;
-`
+

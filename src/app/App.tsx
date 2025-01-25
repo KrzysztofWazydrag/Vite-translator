@@ -1,9 +1,11 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import styled, { ThemeProvider } from "styled-components"
 import { theme } from 'lib/styles'
 import { TranslatorScreen } from "features/translator"
-import { Footer, Header } from "lib/components"
+import { Footer, Header, Loader, Message } from "lib/components"
 import { useTranslations } from "lib/hooks"
+import { useSupportedLanguages } from "features/translator/useSupportedLanguages"
+import { Language } from "lib/models"
 
 export const App = () => {
     const T = useTranslations()
@@ -51,7 +53,7 @@ export const App = () => {
     <ThemeProvider theme={theme}>
         <AppContainer>
             <Header />
-            <TranslatorScreen />
+            <TranslatorScreen languages={languages} />
             <Footer />
         </AppContainer>
     </ThemeProvider>
@@ -65,4 +67,17 @@ const AppContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+`
+const FetchLoaderContainer = styled.div`
+    width: 50%;
+    align-self: center;
+    display: flex;
+`
+const LoaderText = styled.div`
+    color: ${({ theme }) => theme.colors.typography};
+    margin-top: 10px;
+`
+const CenterContainer = styled.div`
+    display: flex;
+    justify-content: center;
 `
