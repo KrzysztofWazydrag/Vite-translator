@@ -8,7 +8,6 @@ type TranslatorScreenProps = {
     languages: Array<Language>
 }
 
-//component delete this line of code
 export const TranslatorScreen: React.FunctionComponent<TranslatorScreenProps> = ({
     languages
 }) =>(
