@@ -1,6 +1,6 @@
-import { Language } from "lib/models"
+import { LanguageCode } from "lib/models"
 
 export type SelectedLanguages = {
-    source: Language,
-    target: Language
+    source: LanguageCode,
+    target: LanguageCode
 }

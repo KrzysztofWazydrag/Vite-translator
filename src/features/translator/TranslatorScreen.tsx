@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Confidence, ExchangeLanguage, Loader, Message, SelectLanguage, TextCounter, TextInput } from 'lib/components'
 import styled from "styled-components"
-import { Language } from 'lib/models'
+import { Language, LanguageCode } from 'lib/models'
 import { SelectedLanguages } from './types'
 
 
@@ -14,8 +14,8 @@ export const TranslatorScreen: React.FunctionComponent<TranslatorScreenProps> = 
 }) => {
     const [selectedLanguages, setSelectedLanguages] = useState<SelectedLanguages>
     ({
-    source: 'pl',
-    target: 'en'
+    source: LanguageCode.Polish,
+    target: LanguageCode.English
     })
 
 
@@ -25,9 +25,12 @@ export const TranslatorScreen: React.FunctionComponent<TranslatorScreenProps> = 
                 <InputContainer>
                     <SelectLanguage
                     languages={languages}
-                    exclude={[]}
-                    onChange={newLanguage => {}}
-                    selectedLanguage={}
+                    exclude={[selectedLanguages.target]}
+                    selectedLanguage={selectedLanguages.source}
+                    onChange={newLanguage => setSelectedLanguages(prevState => ({
+                        ...prevState,
+                        source: newLanguage.code
+                    }))}
                     />
                     <TextInput />
                     <LoaderContainer>
@@ -43,8 +46,11 @@ export const TranslatorScreen: React.FunctionComponent<TranslatorScreenProps> = 
                     <SelectLanguage
                     languages={languages}
                     exclude={[]}
-                    onChange={newLanguage => {}}
-                    selectedLanguage={}
+                    onChange={newLanguage => setSelectedLanguages(prevState => ({
+                        ...prevState,
+                        target: newLanguage.code
+                    }))}
+                    selectedLanguage={selectedLanguages.target}
                     />
                     <TextInput />
                     <LoaderContainer>

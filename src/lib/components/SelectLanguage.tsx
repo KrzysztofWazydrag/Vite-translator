@@ -1,11 +1,11 @@
 import React from "react"
-import { Language } from "lib/models"
+import { Language, LanguageCode } from "lib/models"
 import { styled } from "styled-components"
 
 type SelectLanugagesProps = {
     languages: Array<Language>,
-    selectedLanguage: Language,
-    exclude: Array<Language>,
+    selectedLanguage: LanguageCode,
+    exclude: Array<LanguageCode>,
     onChange(newLanguage: Language): void
 }
 
@@ -17,12 +17,11 @@ export const SelectLanguage: React.FunctionComponent<SelectLanguageProps> = ({
  }) => {
     return(
         <Select>
-            <Option>
-                Polish
+            {languages.map(language => (
+                <Option key={language.code}>
+                {language.name}
             </Option>
-            <Option>
-                English
-            </Option>
+            ))}
         </Select>
     )
 }
