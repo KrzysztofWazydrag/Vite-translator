@@ -22,7 +22,7 @@ export const Loader: React.FunctionComponent = ({ children }) => (
 )
 
 const ActivityIndicator = styled.div`
-    widdth: 100%;
+    width: 100%;
     height: 2px;
     margin: 5px;
     background-color: ${({ theme }) => theme.colors.primary };

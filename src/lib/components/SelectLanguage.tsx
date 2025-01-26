@@ -1,16 +1,31 @@
+import React from "react"
+import { Language } from "lib/models"
 import { styled } from "styled-components"
 
-export const SelectLanguage = () => (
-    <Select>
-        <Option>
-            Polish
-        </Option>
-        <Option>
-            English
-        </Option>
-    </Select>
+type SelectLanugagesProps = {
+    languages: Array<Language>,
+    selectedLanguage: Language,
+    exclude: Array<Language>,
+    onChange(newLanguage: Language): void
+}
 
-)
+export const SelectLanguage: React.FunctionComponent<SelectLanguageProps> = ({
+    languages,
+    selectedLanguage,
+    exclude,
+    onChange
+ }) => {
+    return(
+        <Select>
+            <Option>
+                Polish
+            </Option>
+            <Option>
+                English
+            </Option>
+        </Select>
+    )
+}
 
 const Select = styled.select`
     max-width: 140px;

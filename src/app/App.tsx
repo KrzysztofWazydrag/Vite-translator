@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from "react"
 import styled, { ThemeProvider } from "styled-components"
 import { theme } from 'lib/styles'
-import { TranslatorScreen } from "features/translator"
+import { TranslatorScreen, translatorActions } from "features/translator"
 import { Footer, Header, Loader, Message } from "lib/components"
 import { useTranslations } from "lib/hooks"
-import { useSupportedLanguages } from "features/translator/useSupportedLanguages"
+
 import { Language } from "lib/models"
 
 export const App = () => {
     const T = useTranslations()
     const [languages, setLanguages] = useState<Array<Language>>([])
-    const { isLoading, hasError, fetch: getSupportedLanguages } = useSupportedLanguages(setLanguages)
+    const { isLoading, hasError, fetch: getSupportedLanguages } = translatorActions.useSupportedLanguages(setLanguages)
 
     useEffect(() => {
         getSupportedLanguages()
     }, [])
 
+const getLayout = () => {
     if (isLoading) {
         return (
             <FetchLoaderContainer>
@@ -48,12 +49,17 @@ export const App = () => {
         )
     }
 
+    return (
+        <TranslatorScreen languages={languages} />
+    )
+}
 
    return (
     <ThemeProvider theme={theme}>
         <AppContainer>
             <Header />
-            <TranslatorScreen languages={languages} />
+
+            {getLayout()}
             <Footer />
         </AppContainer>
     </ThemeProvider>
