@@ -2,24 +2,39 @@ import React from "react"
 import { Language, LanguageCode } from "lib/models"
 import { styled } from "styled-components"
 
-type SelectLanugagesProps = {
+type SelectLanguagesProps = {
     languages: Array<Language>,
     selectedLanguage: LanguageCode,
     exclude: Array<LanguageCode>,
-    onChange(newLanguage: Language): void
+    onChange(newLanguage: LanguageCode): void
 }
 
-export const SelectLanguage: React.FunctionComponent<SelectLanguageProps> = ({
+export const SelectLanguage: React.FunctionComponent<SelectLanguagesProps> = ({
     languages,
     selectedLanguage,
     exclude,
     onChange
  }) => {
+    const filteredLanguages = languages
+        .filter(language => !exclude.includes(language.code))
+        .map(languages => ({
+            key: languages.code,
+            label: languages.name
+        }) )
+
+
     return(
-        <Select>
-            {languages.map(language => (
-                <Option key={language.code}>
-                {language.name}
+        //jesli uzywamy 'map' to naszym obowiazkiem jest dostarczyc klucz 'key'- React wymaga tego klucza.
+        <Select
+            value={selectedLanguage}
+            onChange={event => onChange(event.target.value as LanguageCode)}
+        >
+            {filteredLanguages.map(language => (
+                <Option
+                key={language.key}
+                value={language.key}
+                >
+                {language.label}
             </Option>
             ))}
         </Select>

@@ -24,12 +24,16 @@ export const TranslatorScreen: React.FunctionComponent<TranslatorScreenProps> = 
             <TranslatorContainer>
                 <InputContainer>
                     <SelectLanguage
+                    //przekazujemy języki
                     languages={languages}
+                    //przekazujemy co nie moze byc na tej liscie jezykow(po lewej)
                     exclude={[selectedLanguages.target]}
+                    //przekazujemy co jest obecnie zaznaczone
                     selectedLanguage={selectedLanguages.source}
-                    onChange={newLanguage => setSelectedLanguages(prevState => ({
+                    //ustawiamy co uzytkownik aktualnie wybral w wypadku source(ponizej)
+                    onChange={newCode => setSelectedLanguages(prevState => ({
                         ...prevState,
-                        source: newLanguage.code
+                        source: newCode
                     }))}
                     />
                     <TextInput />
@@ -45,10 +49,11 @@ export const TranslatorScreen: React.FunctionComponent<TranslatorScreenProps> = 
                 <InputContainer>
                     <SelectLanguage
                     languages={languages}
-                    exclude={[]}
-                    onChange={newLanguage => setSelectedLanguages(prevState => ({
+                    exclude={[selectedLanguages.source]}
+                    //ustawiamy co uzytkownik aktualnie wybral w wypadku target(ponizej)
+                    onChange={newCode => setSelectedLanguages(prevState => ({
                         ...prevState,
-                        target: newLanguage.code
+                        target: newCode
                     }))}
                     selectedLanguage={selectedLanguages.target}
                     />
