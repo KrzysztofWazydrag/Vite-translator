@@ -4,7 +4,7 @@ export type Language = {
 }
 
 export enum LanguageCode {
-    Auto = 'auto'
+    Auto = 'auto',
     English = 'en',
     Chinese = 'zh',
     German = 'de',

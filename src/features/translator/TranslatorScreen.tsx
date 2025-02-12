@@ -14,7 +14,7 @@ export const TranslatorScreen: React.FunctionComponent<TranslatorScreenProps> = 
 }) => {
     const [selectedLanguages, setSelectedLanguages] = useState<SelectedLanguages>
     ({
-    source: LanguageCode.Polish,
+    source: LanguageCode.Auto,
     target: LanguageCode.English
     })
 
@@ -45,11 +45,17 @@ export const TranslatorScreen: React.FunctionComponent<TranslatorScreenProps> = 
                         <TextCounter />
                     </InputFooter>
                 </InputContainer>
-                <ExchangeLanguage />
+                <ExchangeLanguage
+                    hidden = {selectedLanguages.source === LanguageCode.Auto}
+                    onClick= {() => setSelectedLanguages(prevState => ({
+                        source: prevState.target,
+                        target: prevState.source
+                    }))}
+                />
                 <InputContainer>
                     <SelectLanguage
                     languages={languages}
-                    exclude={[selectedLanguages.source]}
+                    exclude={[selectedLanguages.source, LanguageCode.Auto]}
                     //ustawiamy co uzytkownik aktualnie wybral w wypadku target(ponizej)
                     onChange={newCode => setSelectedLanguages(prevState => ({
                         ...prevState,

@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useMemo} from "react"
 import { Language, LanguageCode } from "lib/models"
 import { styled } from "styled-components"
 
@@ -15,13 +15,26 @@ export const SelectLanguage: React.FunctionComponent<SelectLanguagesProps> = ({
     exclude,
     onChange
  }) => {
-    const filteredLanguages = languages
+    const filteredLanguages = useMemo(() => languages
+        .filter(language => !exclude.includes(language.code))
+        .map(languages => ({
+            key: languages.code,
+            label: languages.name
+        })),
+        [languages, exclude]
+    )
+    /* w tej chwili za kazdym razem jak cos zmieniamy musimy przefiltrowac i przemapowac kazdy komponent wiec
+    uzywamy useMemo powyzej - nowy hook ktory przyjmuje funkcję i tablicę zależności)
+    () => {} ta funkcja bedzie wywolana tylko wtedy gdy nasze zaleznosci [] się zmienią
+
         .filter(language => !exclude.includes(language.code))
         .map(languages => ({
             key: languages.code,
             label: languages.name
         }) )
 
+        Jest to sposob na cachowanie ciezkich operacji
+    */
 
     return(
         //jesli uzywamy 'map' to naszym obowiazkiem jest dostarczyc klucz 'key'- React wymaga tego klucza.
