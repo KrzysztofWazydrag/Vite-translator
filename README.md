@@ -52,3 +52,4 @@ export default tseslint.config({
 =======
 # Vite-translator
 >>>>>>> 2053d0a16488089e15552f345900b5f42ec12e40
+xxxxxx
